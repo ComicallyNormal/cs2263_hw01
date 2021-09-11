@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] 2021-09-11
+
+-Used Gradle to create an app that gives hello world functionality. 
+
+### ADDED
+-a bunch of boilerplate files by running "gradle init" 
 
 ## [0.0.1] - 2021-09-11
 ### Added
