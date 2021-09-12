@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+
+
+## [0.2.0] 2021-09-12
+
+-added basic Apache common CLI functionality. This means that you can use the -help option to display information about the application.
+-Note that the implementation will likely change significantly from here, this is essentially a hello world for the CLI tool. 
+
 ## [0.1.0] 2021-09-11
 
 -Used Gradle to create an app that gives hello world functionality. 

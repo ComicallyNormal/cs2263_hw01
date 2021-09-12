@@ -3,12 +3,53 @@
  */
 package edu.isu.cs2263.hw01;
 
+import org.apache.commons.cli.*;
+
+import java.io.PrintWriter;
+
 public class App {
-    public String getGreeting() {
+
+
+   public String getGreeting() {
         return "Hello World!";
     }
 
+    private static final Option ARG_HELP = new Option("h","help", false, "Help Command");
+
+
+private static void printHelp(Options options) {
+    HelpFormatter formatter = new HelpFormatter();
+    PrintWriter pw = new PrintWriter(System.out);
+    pw.println("HW1 App "+Math.class.getPackage().getImplementationVersion());
+    pw.println();
+    formatter.printUsage(pw, 100, "java -jar App.jar [options] num1 num2");
+    formatter.printOptions(pw, 100, options, 2, 5);
+    pw.close();
+
+}
+
+
+
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        //System.out.println(new App().getGreeting());
+    CommandLineParser clp = new DefaultParser();
+
+    Options options = new Options();
+    options.addOption(ARG_HELP);
+
+   //System.out.println(ARG_HELP.getOpt());
+    try {
+        CommandLine cl = clp.parse(options, args);
+
+
+        if (cl.hasOption(ARG_HELP.getLongOpt())) {
+              printHelp(options);
+        }
+    }
+    catch (Exception e){
+        e.printStackTrace();
+    }
+
+
     }
 }
