@@ -6,10 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+##[1.0.4] 2021-09-12
+-fixed an issue where arguments were not being passed in correctly
+-updated some documentation
+-screwed around with git flow and created versions 1.0.1-1.0.3 
 
 ## [1.0.0] 2021-09-12
 
--Implemented all the neccessary code for the release of verson 1.0.0 as specified in the Moodle Homework 1 assignment page. 
+-Implemented all the necessary code for the release of verson 1.0.0 as specified in the Moodle Homework 1 assignment page. 
 -Capitalized a couple of words in the changelog. 
 -Added much better documentation
 
