@@ -7,11 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [1.0.0] 2021-09-12
 
+-Implemented all the neccessary code for the release of verson 1.0.0 as specified in the Moodle Homework 1 assignment page. 
+-Capitalized a couple of words in the changelog. 
+-Added much better documentation
 
 ## [0.2.0] 2021-09-12
 
--added basic Apache common CLI functionality. This means that you can use the -help option to display information about the application.
+-Added basic Apache common CLI functionality. This means that you can use the -help option to display information about the application.
 -Note that the implementation will likely change significantly from here, this is essentially a hello world for the CLI tool. 
 
 ## [0.1.0] 2021-09-11
@@ -19,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -Used Gradle to create an app that gives hello world functionality. 
 
 ### ADDED
--a bunch of boilerplate files by running "gradle init" 
+-A bunch of boilerplate files by running "gradle init" 
 
 ## [0.0.1] - 2021-09-11
 ### Added
