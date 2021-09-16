@@ -63,7 +63,8 @@ gradle-app.setting
 ## IntelliJ
 ##############################
 out/
-*.idea/
+.idea/
+.idea/*.xml
 *.idea_modules/
 *.iml
 *.ipr
