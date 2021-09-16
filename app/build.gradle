@@ -31,5 +31,17 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'cs2263_hw01.App'
+   // mainClass = 'edu.isu.cs2263.hw01.App'
+    mainClassName = 'edu.isu.cs2263.hw01.App'
+   // mainClass = "App"
+  //  executableDir = 'jar_tests'
+  //  version = '1.0.0'
 }
+jar {
+    manifest {
+        attributes (
+                'Main-Class': 'edu.isu.cs2263.hw01.App'
+        )
+    }
+}
+version = '1.0.1'
