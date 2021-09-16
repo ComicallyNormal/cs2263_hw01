@@ -58,7 +58,7 @@ public class App {
         options.addOption(ARG_HELP);
         options.addOption(ARG_OUT);
 
-        
+
         //Try Except block
         try {
             //Parses command line arguments.
