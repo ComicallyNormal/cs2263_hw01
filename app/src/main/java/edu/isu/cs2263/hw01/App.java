@@ -2,7 +2,7 @@
  * The App.java program fulfills the Homework requirements for CS 2263's Homework One assignment.
  *
  * @author Alex Diviney
- * @version 1.0.5
+ * @version 1.0.0
  */
 
 
@@ -58,10 +58,7 @@ public class App {
         options.addOption(ARG_HELP);
         options.addOption(ARG_OUT);
 
-
-        //String arg1 = ""; //In v 1.0.0 this is our filename for either the -o or -b options.
-        //String arg2 = ""; //not used
-
+        
         //Try Except block
         try {
             //Parses command line arguments.
