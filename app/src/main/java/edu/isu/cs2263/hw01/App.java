@@ -29,7 +29,6 @@ public class App {
     private static final Option ARG_OUT = Option.builder("o").argName("file").hasArg(true).longOpt("output").desc("output file").build(); //output option
 
 
-
     //pretty print function for the help option
     //took most of this piece of code from a Youtube video on the Apache Commons CLI : youtube.com/watch?v=w0Bckb9Znfg
     private static void printHelp(Options options) {
