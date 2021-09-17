@@ -1,5 +1,12 @@
-package edu.isu.cs2263.hw01;
 
+/**
+ * Expression.java evaluates a single line string that's passed in.
+ *
+ * @author Alex Diviney
+ * @version 1.1.0
+ */
+
+package edu.isu.cs2263.hw01;
 import java.util.LinkedList;
 
 public class Expression {

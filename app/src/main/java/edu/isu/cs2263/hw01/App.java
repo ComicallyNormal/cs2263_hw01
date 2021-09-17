@@ -2,7 +2,7 @@
  * The App.java program fulfills the Homework requirements for CS 2263's Homework One assignment.
  *
  * @author Alex Diviney
- * @version 1.0.5
+ * @version 1.1.0
  */
 
 package edu.isu.cs2263.hw01;
@@ -72,7 +72,6 @@ public class App {
         try {
             //Parses command line arguments.
             CommandLine cl = clp.parse(options, args);
-
 
             if (cl.hasOption(ARG_HELP.getLongOpt())) {
                 printHelp(options);
