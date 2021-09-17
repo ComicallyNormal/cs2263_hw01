@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: app
-Implementation-Version: test-1.0.2
-Main-Class: edu.isu.cs2263.hw01.App
-
