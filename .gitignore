@@ -55,6 +55,11 @@ buildNumber.properties
 bin/
 build/
 *.gradle
+.gradle
+gradle/
+gradlew/
+gradlew
+.gradle/
 *.gradletasknamecache
 gradle-app.setting
 !gradle-wrapper.jar
@@ -63,9 +68,11 @@ gradle-app.setting
 ## IntelliJ
 ##############################
 out/
+.idea
 .idea/
 .idea/*.xml
 *.idea_modules/
 *.iml
 *.ipr
 *.iws
+
