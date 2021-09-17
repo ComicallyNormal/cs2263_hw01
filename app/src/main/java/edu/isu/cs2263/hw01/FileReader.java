@@ -1,3 +1,11 @@
+/**
+ * The FileReader.java program turns a file into a string that is then passed into Expression.java and evaluated.
+ *
+ * @author Alex Diviney
+ * @version 1.1.0
+ */
+
+
 package edu.isu.cs2263.hw01;
 import java.io.*;
 
@@ -11,8 +19,6 @@ public class FileReader {
 //File Reader grabs a file, turns it into a bytestream, then into an array, cleans the array, then sends it line
     //by line to Expression to be evaluated.
     public FileReader(String file) {
-
-
         //InputStream is = parseFile.getResourceAsStream("/test.csv");
         try {
             //The hell is this boilerplate code. ( I <3 Stackexchange)
@@ -31,13 +37,8 @@ public class FileReader {
                 str_built = str_builder.toString();
 
             }
-
+        //gets rid of line ends
             str_arr = str_built.split("(\r\n|\r|\n)");
-            for (int x = 0;x<str_arr.length;x++) {
-                //System.out.println(str_arr[x]);
-            }
-            //System.out.println(result);
-            //return result.toString();
 
         }
         catch(Exception e){
@@ -45,20 +46,17 @@ public class FileReader {
         }
     }
 
-
+//evaluates the file, which is now a string array, by sending it to Expression
     public void fileExp(){
 
        // System.out.println(str_arr[2]);
         for(int x = 0;x<str_arr.length;x++) {
 
-           // System.out.println(str_arr[x]);
-           // str_arr[str_arr.length-1] = "";
             Expression lineExp = new Expression(str_arr[x]);
             System.out.println(lineExp.toString());
             System.out.println(lineExp.eval());
 
         }
-
 
             }
 
