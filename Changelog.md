@@ -1,10 +1,32 @@
 # Changelog
+
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+##[1.1.0] 2021-09-17
+-created a number evaluation process
+
+-allows user to input expression and get the evaluated statement (left to right)
+
+-allows the user to put a batch file in the resources directory and then 
+evaluate the file directly, displaying an output
+
+-cleaned up files that will be pushed to github. 
+
+-updated README
+
+### ADDED
+-FileReader.java
+
+-Expression.java
+
+-batch.txt (this will not exist for you)
+
 ##[1.0.5] 2021-09-16
 -changed a couple comments
 -This should be the final 1.0 branch release
