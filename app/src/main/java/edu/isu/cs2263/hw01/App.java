@@ -5,11 +5,14 @@
  * @version 1.0.5
  */
 
-
-
 package edu.isu.cs2263.hw01;
 
 import org.apache.commons.cli.*;
+
+// Buffered Reader imports
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -67,42 +70,47 @@ public class App {
             //Parses command line arguments.
             CommandLine cl = clp.parse(options, args);
 
-            if (cl.getArgList().size() >0 && cl.getArgList().get(0).equals("eval")) { //should short circuit passing in empty statement.
-                eval = cl.getArgList().get(0);
 
-                //user input loop
-                System.out.print("Input an Expression: ");
-                Scanner scan = new Scanner(System.in);
-
-                String flag = "c";
-                String inputString = "";
-                while (!inputString.equals("c")) {
-                    inputString = scan.nextLine();
-                    Expression evaluatedString = new Expression(inputString);
-                    evaluatedString.eval();
-//ok
-                }
-
-            }
-            else{
-                System.out.println("Invalid input, try -h for help"); //checks for inputs other than eval
-                System.exit(0); //exits if bad input found.
-            }
-            //if userInput includes -h or --help then a help message (in printHelp()) is printed. Then program ends.
-            //this if comes first so that we can rely on short circuiting to avoid argument frequency errors. If an
-            // -h option is found in a command, then we dont evaluate the rest of the command, just output the help print statement.
             if (cl.hasOption(ARG_HELP.getLongOpt())) {
                 printHelp(options);
                 System.exit(0);
             }
+
+            if (cl.getArgList().size() >0 && cl.getArgList().get(0).equals("eval") && !
+                    (cl.hasOption(ARG_HELP.getLongOpt()) || cl.hasOption(ARG_BATCH.getLongOpt()) || cl.hasOption(ARG_OUT.getLongOpt()))) { //should short circuit passing in empty statement.
+                eval = cl.getArgList().get(0);
+
+                //user input loop
+                System.out.print("Input an Expression: ");
+                // Scanner scan = new Scanner(System.in);
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(System.in));
+
+                String flag = "c";
+                String inputString = "foobar";
+                while (!inputString.equals("c")) {
+                    inputString = reader.readLine();
+                    if(!inputString.equals("c")) {
+                        Expression evaluatedString = new Expression(inputString);
+                        System.out.println(evaluatedString.eval());
+                    }
+                }
+
+            }
+            //if userInput includes -h or --help then a help message (in printHelp()) is printed. Then program ends.
+            //this if comes first so that we can rely on short circuiting to avoid argument frequency errors. If an
+            // -h option is found in a command, then we dont evaluate the rest of the command, just output the help print statement.
+
 
 
             //If userInput includes -b or --batch then the system echoes the filename given.
             else if(cl.hasOption(ARG_BATCH.getLongOpt())){
 
                 String batchArg1 = cl.getOptionValue(ARG_BATCH.getLongOpt()); // gets the first argument passed in after -b or -batch (the filename)
-
                 System.out.println("Batch Value: "+ batchArg1); //Displays the filename
+
+                FileReader fileEval = new FileReader(batchArg1);
+                fileEval.fileExp();
                 // System.out.println(cl.getArgList().size());
             }
             //If userInput includes -o or --output then the system echoes the filename given.
@@ -113,7 +121,10 @@ public class App {
                 System.out.println("Output value: "+outputArg1);
             }
 
-
+            else{
+                System.out.println("Invalid input, try -h for help"); //checks for inputs other than eval
+                System.exit(0); //exits if bad input found.
+            }
 
         }
         catch (Exception e){

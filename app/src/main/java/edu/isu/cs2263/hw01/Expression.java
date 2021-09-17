@@ -29,9 +29,11 @@ public class Expression {
             //System.out.println(numString.charAt(i));
             if (isNum) { //checks if a symbol other than an integer has been entered. If not, adds the symbol to the current string.
                 tempStr += numString.charAt(i);
+                //System.out.println(tempStr);
 
             }
-            if (!isNum) {
+            if (!isNum && currentChar!= ' ' ) {
+
 
                 //symbol has been found.
                 // System.out.println(listNum1.peekLast());
@@ -65,30 +67,8 @@ public class Expression {
     //otherwise continue to iterate.
 
 
-    public void eval() {
+    public int eval() {
 
-        //evaluates the full expression.
-//        try {
-//            int listHead = listNum1.pollFirst();
-//            int listSecondNum = listNum1.pollFirst();
-//            String expList = listExp.pollFirst();
-//            int eval = simpleMath(listHead,listSecondNum,expList);
-//
-//
-//            for(int i = 0; i<listNum1.size();i++){
-//
-//                evaluatedList.addLast(eval);
-//                listSecondNum = evaluatedList.peekLast();
-//                expList = listExp.pollFirst();
-//                eval = simpleMath(listHead,listSecondNum,expList);
-//
-//
-//            }
-//            //System.out.println(evaluatedList.peekLast());
-//        }
-//        catch (Exception e){
-//            e.printStackTrace();
-//        }
         int eval = 0;
         if (listNum1.peekFirst() != null) {
             eval = simpleMath(listNum1.pollFirst(), listNum1.pollFirst(), listExp.pollFirst());
@@ -109,9 +89,8 @@ public class Expression {
             eval = simpleMath(eval,listNum1.pollFirst(),currentExp);
 
             }
-
         }
-        System.out.println(eval);
+        return eval;
     }
 
     private int simpleMath(int num1,int num2,String symb){
@@ -127,5 +106,10 @@ public class Expression {
                 break;
         }
         return eval;
+    }
+
+    public String toString(){
+        String toString = numString;
+        return toString;
     }
 }
