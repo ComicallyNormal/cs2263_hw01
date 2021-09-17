@@ -13,8 +13,10 @@ public class FileReader {
     private StringBuilder str_builder;
     //private Expression lineExp;
 
-    public FileReader(){}
 
+    public FileReader(){}
+//File Reader grabs a file, turns it into a bytestream, then into an array, cleans the array, then sends it line
+    //by line to Expression to be evaluated.
     public FileReader(String file) {
 
 
