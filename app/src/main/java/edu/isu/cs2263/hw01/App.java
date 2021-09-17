@@ -2,7 +2,7 @@
  * The App.java program fulfills the Homework requirements for CS 2263's Homework One assignment.
  *
  * @author Alex Diviney
- * @version 1.0.0
+ * @version 1.0.5
  */
 
 
@@ -12,9 +12,9 @@ package edu.isu.cs2263.hw01;
 import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class App {
-   
 
     //This is a list of options that the application can take.
     //ie. Help, Batch, and Output options.
@@ -24,6 +24,8 @@ public class App {
             " expressions to evaluate").build(); //batch option
 
     private static final Option ARG_OUT = Option.builder("o").argName("file").hasArg(true).longOpt("output").desc("output file").build(); //output option
+
+
 
     //pretty print function for the help option
     //took most of this piece of code from a Youtube video on the Apache Commons CLI : youtube.com/watch?v=w0Bckb9Znfg
@@ -45,6 +47,11 @@ public class App {
 
 
     public static void main(String[] args) {
+
+        String eval;
+        String expression;
+
+
         //The command line parser will let us parse our options list.
         CommandLineParser clp = new DefaultParser();
 
@@ -60,7 +67,27 @@ public class App {
             //Parses command line arguments.
             CommandLine cl = clp.parse(options, args);
 
+            if (cl.getArgList().size() >0 && cl.getArgList().get(0).equals("eval")) { //should short circuit passing in empty statement.
+                eval = cl.getArgList().get(0);
 
+                //user input loop
+                System.out.print("Input an Expression: ");
+                Scanner scan = new Scanner(System.in);
+
+                String flag = "c";
+                String inputString = "";
+                while (!inputString.equals("c")) {
+                    inputString = scan.nextLine();
+                    Expression evaluatedString = new Expression(inputString);
+                    evaluatedString.eval();
+//ok
+                }
+
+            }
+            else{
+                System.out.println("Invalid input, try -h for help"); //checks for inputs other than eval
+                System.exit(0); //exits if bad input found.
+            }
             //if userInput includes -h or --help then a help message (in printHelp()) is printed. Then program ends.
             //this if comes first so that we can rely on short circuiting to avoid argument frequency errors. If an
             // -h option is found in a command, then we dont evaluate the rest of the command, just output the help print statement.
@@ -68,8 +95,11 @@ public class App {
                 printHelp(options);
                 System.exit(0);
             }
+
+
             //If userInput includes -b or --batch then the system echoes the filename given.
             else if(cl.hasOption(ARG_BATCH.getLongOpt())){
+
                 String batchArg1 = cl.getOptionValue(ARG_BATCH.getLongOpt()); // gets the first argument passed in after -b or -batch (the filename)
 
                 System.out.println("Batch Value: "+ batchArg1); //Displays the filename
@@ -82,6 +112,9 @@ public class App {
 
                 System.out.println("Output value: "+outputArg1);
             }
+
+
+
         }
         catch (Exception e){
             e.printStackTrace();
