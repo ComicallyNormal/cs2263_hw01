@@ -50,9 +50,9 @@ public class App {
 
     public static void main(String[] args) {
 
-        for (String arg : args) {
-            System.out.println("Got argument [" + arg + "]");
-        }
+//        for (String arg : args) {
+//            System.out.println("Got argument [" + arg + "]");
+//        }
         //The command line parser will let us parse our options list.
         CommandLineParser clp = new DefaultParser();
 
