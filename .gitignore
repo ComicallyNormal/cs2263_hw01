@@ -54,6 +54,9 @@ buildNumber.properties
 ##############################
 bin/
 build/
+/gradle
+.gradle
+.gradle/
 *.gradle
 *.gradletasknamecache
 gradle-app.setting
@@ -64,6 +67,7 @@ gradle-app.setting
 ##############################
 out/
 .idea/
+.idea
 .idea/*.xml
 *.idea_modules/
 *.iml
