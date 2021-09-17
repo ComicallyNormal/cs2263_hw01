@@ -26,12 +26,12 @@ public class Expression {
         for (int i = 0; i < numString.length(); i++) {
             char currentChar = numString.charAt(i);
             boolean isNum = Character.isDigit(currentChar);
-
+            //System.out.println(numString.charAt(i));
             if (isNum) { //checks if a symbol other than an integer has been entered. If not, adds the symbol to the current string.
                 tempStr += numString.charAt(i);
 
             }
-            else if (!isNum) {
+            if (!isNum) {
 
                 //symbol has been found.
                 // System.out.println(listNum1.peekLast());
@@ -49,46 +49,69 @@ public class Expression {
                 //System.out.println(listNum1.peekFirst()+ " " +listNum1.peekLast());
 
             }
-            if(currentChar == numString.length()-1){
-
+            if(i == numString.length()-1){
                 tempNum = Integer.parseInt(tempStr);
+
+                //System.out.println("CASE REACHED");
                 listNum1.addLast(tempNum);
             }
 
         }
-        System.out.println(listNum1.peekLast());
+        //System.out.println(listNum1.peekLast());
     }
 
 
+//Next step, when iterating, if the expression list is empty, evaluate the last two numbers with the latest expression
+    //otherwise continue to iterate.
 
 
-
-    public void eval(){
+    public void eval() {
 
         //evaluates the full expression.
-        try {
-            int evaluate = 0;
-            int lSize = listNum1.size();
-            int list1Head1 =listNum1.pollFirst();
-            int list1Head2 = listNum1.pollFirst();
-            String listExpHead = listExp.pollFirst();
-            //System.out.println(listNum1.peekLast());
-            for(int i = 0; i<lSize;i++) {
-                //System.out.println(list1Head1 + " " + list1Head2);
+//        try {
+//            int listHead = listNum1.pollFirst();
+//            int listSecondNum = listNum1.pollFirst();
+//            String expList = listExp.pollFirst();
+//            int eval = simpleMath(listHead,listSecondNum,expList);
+//
+//
+//            for(int i = 0; i<listNum1.size();i++){
+//
+//                evaluatedList.addLast(eval);
+//                listSecondNum = evaluatedList.peekLast();
+//                expList = listExp.pollFirst();
+//                eval = simpleMath(listHead,listSecondNum,expList);
+//
+//
+//            }
+//            //System.out.println(evaluatedList.peekLast());
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
+        int eval = 0;
+        if (listNum1.peekFirst() != null) {
+            eval = simpleMath(listNum1.pollFirst(), listNum1.pollFirst(), listExp.pollFirst());
+        }
 
-                evaluate = simpleMath(list1Head1,list1Head2, listExpHead);
-                System.out.println(evaluate);
-                evaluatedList.addLast(evaluate);
-                listExpHead = listExp.pollFirst();
-                list1Head1 = evaluatedList.peekLast();
-                list1Head2 = listNum1.pollFirst();
+        int size = listNum1.size();
+        String currentExp = "";
+        for (int x = 0; x < size; x++) {
+
+            if (listNum1.peekFirst() != null && listExp.peekFirst() != null) {
+               // System.out.print(eval);
+                currentExp = listExp.peekFirst();
+                eval = simpleMath(eval, listNum1.pollFirst(), listExp.pollFirst());
+            }
+
+            else if (listNum1.peekFirst() != null && listExp.peekFirst() == null) {
+
+            eval = simpleMath(eval,listNum1.pollFirst(),currentExp);
 
             }
-            //System.out.println(evaluatedList.peekLast());
+
         }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+        System.out.println(eval);
     }
 
     private int simpleMath(int num1,int num2,String symb){
