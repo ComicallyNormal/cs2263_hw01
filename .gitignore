@@ -73,6 +73,7 @@ out/
 .idea/*.xml
 *.idea_modules/
 *.iml
+.iml
 *.ipr
 *.iws
-
+.idea/workspace.xml
